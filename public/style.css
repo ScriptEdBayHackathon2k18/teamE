@@ -29,11 +29,16 @@ flex:50%;
     position:relative;
 }
 .button{
-width:80px;
-height:70px;
+width:30em;
+height:6.5em;
 
 }
 
 #title{
   text-align:center;
+}
+
+.button-center{
+ display:flex;
+flex-direction:column;
 }

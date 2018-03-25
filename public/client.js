@@ -14,7 +14,7 @@ for (var i = 0; i < 10; i ++){
 }
 for (i = 0; i < 10; i ++){
   for (var i2 = 0; i2 < 10; i2 ++){
-    grid[i][i2] = "Empty";
+    grid[i][i2] = "empty";
   }
 }
 
@@ -23,8 +23,26 @@ function randomInt(min,max){
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-//
-
+//draws the grid
+function draw(){
+  for(i = 0; i < 10;i++){
+    for (i2 = 0; i < 10; i ++){
+      //styling the box
+      var box = $("<div>").attr("class","box");
+      if (grid[i][i2] === "empty"){
+        box.css("position","relative")
+        box.css("left","20px");
+        box.css("border","solid","5px");
+        box.css("width","20px");
+        box.css("height","20px");
+      }
+      //add the box
+      $("#right").append(box);
+    }
+    $("#right").append("<br>");
+  }
+}
+draw();
 //choose the character
 function chooseCha(cha){
   character = cha;
@@ -41,10 +59,30 @@ function chooseCha(cha){
 }
 
 $("#shen").click(function(){
-  choosecha();
+  chooseCha("Shen");
+  alert(character);
 });
 
 $("#razzi").click(function(){
-  character = "Razzi"
+  chooseCha("Razzi");
   alert(character);
 });
+
+//hide buttons during selection
+$("")
+if (character===""){
+  $(".button").hide();
+}else{
+  $(".button").show();
+}
+
+
+
+
+
+
+
+
+
+
+

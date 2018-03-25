@@ -1,7 +1,7 @@
 //charater variables
 var character = "";
 var health = 10;
-var food = 20;
+var food = 30;
 var strength = 1;
 var skills = [];//Shield,smoke,damage,item. Shen has shield, Razzi has smoke
 //location variables
@@ -132,7 +132,7 @@ function randoming(){
   }
   if (a === 3){
     say("You find another piece of food");
-    food ++;
+    food += 3;
   }
   if (a === 4){
     say("You find another piece of food, and you get a healing pack!");
@@ -204,6 +204,7 @@ $(".button").click(function(){
   var direction = $(this).attr("id");
   //direction = direction.substr(1,direction.length);
   console.log(direction);
+  var x 
   if (direction === "destroy"){
     destroy();
     return;
@@ -244,7 +245,9 @@ $(".button").click(function(){
     $("#destroy").prop( "disabled", true );
     say("No!You are out of food! Game Over!");
   }
-  
+  if (encounter === true){
+    running();
+  }
   
   draw();
 });
@@ -274,8 +277,35 @@ setInterval(function(){
 //cheetah running
 function running(){
   var direction = [];
+  if (cx < 9){
+    direction.push("right");
+  }
   if (cx > 0){
+    direction.push("left");
+  }
+  if (cy < 9){
+    direction.push("down");
+  }
+  if (cy > 0){
+    direction.push("up");
+  }
+  if (direction.length > 0){
+    var way = direction[randomInt(0,direction.length)];
+    if (way === "right"){
+      cx ++;
+    }
+    if (way === "left"){
+      cx --;
+    }
+    if (way === "down"){
+      cy ++;
+    }
+    if (way === "up"){
+      cy --;
+    }
     
+  } else {
+    return;
   }
 }
 

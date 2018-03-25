@@ -108,6 +108,12 @@ function east(){
 }
 
 $(".button").click(function(){
+  var direction = String($(this).attr("id"));
+  //direction = direction.substr(1,direction.length);
+  console.log(direction);
+  if (direction === "north"){
+    north();
+  }
 });
 
 

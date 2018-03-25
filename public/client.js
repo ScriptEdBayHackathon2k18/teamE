@@ -2,6 +2,7 @@
 var character = "";
 var health = 0;
 var food = 20;
+var strength = 1;
 var skills = [];//Shield,smoke,damage,item. Shen has shield, Razzi has smoke
 //location variables
 var x = 0;
@@ -25,9 +26,12 @@ function randomInt(min,max){
 
 function r(){
   character = "Razzi";
+  $(".container").css("background","white");
+
 }
 function s(){
-character
+  character="Shen";
+  $(".container").css("background","white");
 }
 
 //draws the grid
@@ -39,16 +43,19 @@ function draw(){
       //setting class
       var box = $("<div>").attr("class","box");
       box.css("position","absolute")
-      box.css("top",i*50+"px");
-      box.css("left",i2*50+770+"px");
+      box.css("top",i*51+90+"px");
+      box.css("left",i2*51+770+"px");
       box.css("border","solid","1px");
       box.css("width","50px");
       box.css("height","50px");
+      if (grid[i][i2] === "destroy"){
+        box.css("background","gray");
+      }
       //if character on tile
       if (i === y && i2 === x){
-        var pic = $("<img>").css("left",i2*50+770+"px");
+        var pic = $("<img>").css("left",i2*51+770+"px");
         pic.css("position","absolute");
-        pic.css("top",i*50+"px");
+        pic.css("top",i*51+90+"px");
         pic.css("width","50px");
         pic.css("height","50px");
         if (character === "Razzi"){
@@ -82,6 +89,8 @@ function chooseCha(cha){
 
 //random function when get to empty space
 function randoming(){
+  var a = randomInt(0,10);
+  
 }
 
 $("#shen").click(function(){
@@ -141,7 +150,11 @@ $(".button").click(function(){
   draw();
 });
 
-
+function destroy(){
+  if (){
+  grid[x][y] = "destroy"
+  }
+}
 
 
 

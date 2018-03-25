@@ -56,3 +56,9 @@ display:none;
 width:30em;
 height:6.5em;
 }
+
+#chealth{
+  display:absolute;
+  top: 580px;
+  left: 100px;
+}

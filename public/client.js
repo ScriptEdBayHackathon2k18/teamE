@@ -21,7 +21,10 @@ for (i = 0; i < 10; i ++){
 //cheetah position
 var cx = randomInt(1,9);
 var cy = randomInt(1,9);
+var Chealth = 1;
 var encounter = false;
+var defeatedTimes = 0;
+$("#chealth").hide();
 
 //functions
 function randomInt(min,max){
@@ -226,8 +229,7 @@ $(".button").click(function(){
   if (x === cx && y === cy ){
     encounter = true;
     say(character+" encounters the cheetah!");
-    cx = randomInt(0,9);
-    cy = randomInt(0,9);
+    battle();
   }
   //if the food reaches 0
   if (food <= 0){
@@ -266,6 +268,7 @@ function destroy(){
 setInterval(function(){
   $("#food").text("Food: "+food); // <div id="food">Food</div>
   $("#health").text("Health: "+health);
+  $("#str").text("Strength: "+strength);
   $("#skill1").text("skill1: "+skills[0]);
   $("#skill2").text("skill2: "+skills[1]);
 },100);
@@ -275,27 +278,45 @@ setInterval(function(){
 
   
 //battle system
+
 function battle(){
+$("#chealth").show();
 var result ="";
-var Chealth = x
+Chealth = randomInt(10,15);
 $(".button").hide();
 $(".Bbuttons").show();
-
-  
-  
-  
-  
-  
-  if(result==="win"){
-
-}else if(result === "escape"){
-
-}else if(result === "defeat"){
-
 }
-  
+
+$("#attack").click(function(){
+  Chealth -= strength;
+  if (Chealth <= 0){
+      say("You defeated the cheetah and the cheetah run away!");
+      defeatedTimes += 1;
+      cx = randomInt(0,9);
+      cy = randomInt(0,9);
+      $(".Bbutton").hide();
+      $(".button").show();
+      $("#ch")
+      if(defeatedTimes >= 3){
+        say("GG, you won the game as "+character+"!");
+        $(".Bbutton").hide();
+        $(".button").hide();
+      }
   }
+});
 
-$("");
+$("#escape").click(function(){
+  $(".Bbutton").hide();
+  $(".button").show();
+  say("You escaped! The cheetah can't find you and run away too!");
+  cx = randomInt(0,9);
+  cy = randomInt(0,9);
+});
 
 
+function BG(){
+  $(".Bbutton").hide();
+  $(".button").hide();
+  
+  
+}

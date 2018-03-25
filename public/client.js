@@ -60,19 +60,19 @@ function draw(){
       //setting class
       var box = $("<div>").attr("class","box");
       box.css("position","absolute");
-      box.css("top",i*51+90+"px");
-      box.css("left",i2*51+770+"px");
+      box.css("top",i*55+90+"px");
+      box.css("left",i2*55+770+"px");
       box.css("border","solid","1px");
       box.css("width","50px");
       box.css("height","50px");
       if (grid[i][i2] === "destroy"){
-        box.css("background","gray");
+        box.css("color","red");
       }
       //if character on tile
       if (i === y && i2 === x){
-        var pic = $("<img>").css("left",i2*51+770+"px");
+        var pic = $("<img>").css("left",i2*55+770+"px");
         pic.css("position","absolute");
-        pic.css("top",i*51+90+"px");
+        pic.css("top",i*55+90+"px");
         pic.css("width","50px");
         pic.css("height","50px");
         if (character === "Razzi"){
@@ -85,9 +85,9 @@ function draw(){
       }
       //if cheetah on tile
       if (i === cy && i2 === cx && encounter === true){
-        var pic2 = $("<img>").css("left",i2*51+770+"px");
+        var pic2 = $("<img>").css("left",i2*55+770+"px");
         pic2.css("position","absolute");
-        pic2.css("top",i*51+90+"px");
+        pic2.css("top",i*55+90+"px");
         pic2.css("width","50px");
         pic2.css("height","50px");
         pic2.attr("src","https://dg2d3wxprq381.cloudfront.net/cms/sites/default/files/header-cheetah-sperka.jpg?itok=0AGjZLOP");
@@ -241,11 +241,8 @@ $(".button").click(function(){
     $("#south").prop( "disabled", true );
     $("#east").prop( "disabled", true );
     $("#west").prop( "disabled", true );
-  } else {
-    $("#north").prop( "disabled", false );
-    $("#south").prop( "disabled", false );
-    $("#east").prop( "disabled", false );
-    $("#west").prop( "disabled", false );
+    $("#destroy").prop( "disabled", true );
+    say("No!You are out of food! Game Over!");
   }
   
   
@@ -260,21 +257,12 @@ function destroy(){
   } else {
     say("The tile is already destroyed!");
   }
-  
-  if (food >= 1) {
-    $("#north").prop( "disabled", false );
-    $("#south").prop( "disabled", false );
-    $("#east").prop( "disabled", false );
-    $("#west").prop( "disabled", false );
-  } 
- }
+}
 
 setInterval(function(){
   $("#food").text("Food: "+food); // <div id="food">Food</div>
   $("#health").text("Health: "+health);
   $("#str").text("Strength: "+strength);
-  $("#skill1").text("skill1: "+skills[0]);
-  $("#skill2").text("skill2: "+skills[1]);
   $("#chealth").text("Cheetah Health: "+Chealth);
 },100);
 
@@ -283,6 +271,13 @@ setInterval(function(){
 
   
 //battle system
+//cheetah running
+function running(){
+  var direction = [];
+  if (cx > 0){
+    
+  }
+}
 
 // cheetah attack
 function attack(){
@@ -305,7 +300,10 @@ $(".Bbuttons").show();
 $("#attack").click(function(){
   Chealth -= strength;
   say("You attack the cheetah and it takes "+strength+" damage!");
-  attack();
+  if(Chealth > 0){
+    attack();
+  }
+  
   if (Chealth <= 0){
       say("You defeated the cheetah and the cheetah run away!");
       defeatedTimes += 1;

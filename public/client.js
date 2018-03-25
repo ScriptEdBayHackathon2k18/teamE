@@ -91,7 +91,54 @@ function chooseCha(cha){
   grid[0][0] = "character";
 }
 
-
+//random function when get to empty space
+function randoming(){
+  var a = randomInt(0,10);
+  if (a === 0){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 1){
+    say("The wind is too strong and it's making you cold so you eat another piece of food");
+    food --;
+  }
+  if (a === 2){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 3){
+    say("You find another piece of food");
+    food ++;
+  }
+  if (a === 4){
+    say("You find another piece of food");
+    food ++;
+  }
+  if (a === 5){
+    say("You find a spear and increase a strength!");
+    strength ++;
+  }
+  if (a === 6){
+    say("The animals stole a piece of your food");
+    food --;
+  }
+  if (a === 7){
+    say("You lost a piece of food");
+    food --;
+  }
+  if (a === 8){
+    say("You prayed for food. Some food spawned right before your eyes");
+    food ++;
+  }
+  if (a === 9){
+    say("Food is good and you save a piece for later!");
+    food ++;
+  }
+  if (a === 10){
+    say("The food in front of you is extremely tempting to eat so you eat it!");
+    food --;
+  }
+}
 
 $("#shen").click(function(){
   chooseCha("Shen");
@@ -133,34 +180,48 @@ $(".button").click(function(){
   //direction = direction.substr(1,direction.length);
   console.log(direction);
   if (direction === "destroy"){
+    destroy();
+    return;
   }
   if (direction === "north" && y > 0){
     north();
+    food --;
   }
   if (direction === "south" && y < 9){
     south();
+    food --;
   }
   if (direction === "west" && x > 0){
     west();
+    food --;
   }
   if (direction === "east" && x < 9){
     east();
+    food --;
   }
   if (grid[x][y] === "empty"){
     randoming();
+  } else if (grid[x][y] === "destroy"){
+    say("All you see is a ruin in the vast jungle,");
   }
-  food --;
+  if (food < 0){
+    $("#north").prop( "disabled", true ); // <div id="north">North</div>
+  }
   draw();
 });
 
 function destroy(){
-  if (grid[x][y] !== "destroy"){
-  grid[x][y] = "destroy";
+  if (grid[y][x] !== "destroy"){
+    grid[y][x] = "destroy";
+    say("You destroy a place! You also get some food for gathering in that place.");
+    food += 3;
+  } else {
+    say("The tile is already destroyed!");
   }
 }
 
 setInterval(function(){
-  $("#food").text("Food: "+food);
+  $("#food").text("Food: "+food); // <div id="food">Food</div>
   $("#health").text("Health: "+health);
 },100);
 

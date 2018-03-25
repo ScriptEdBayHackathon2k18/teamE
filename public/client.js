@@ -26,6 +26,8 @@ function randomInt(min,max){
 
 //draws the grid
 function draw(){
+  //erase all stuff inside grid
+  $("#grids").html("");
   for(i = 0; i < 10;i++){
     for (i2 = 0; i2 < 10; i2 ++){
       //setting class
@@ -43,11 +45,12 @@ function draw(){
         pic.css("width","50px");
         pic.css("height","50px");
         if (character === "Razzi"){
-          pic.css("src","https://avatars3.githubusercontent.com/u/2244895?s=400&v=4");
+          pic.attr("src","https://avatars3.githubusercontent.com/u/2244895?s=400&v=4");
         } else {
-          pic.css("src","https://avatars1.githubusercontent.com/u/3596778?s=460&v=4");
+          pic.attr("src","https://avatars1.githubusercontent.com/u/3596778?s=460&v=4");
         }
         $("#grids").append(pic);
+        console.log(character);
       }
       //add the box
       $("#grids").append(box);
@@ -72,6 +75,7 @@ function chooseCha(cha){
 
 $("#shen").click(function(){
   chooseCha("Shen");
+  $("#title").html("Exploring The Jungle with "+character);
   //$("#razzi").hide();
   //$("#shen").hide();
   //$("#Razziname").html("Shen");
@@ -79,6 +83,7 @@ $("#shen").click(function(){
 
 $("#razzi").click(function(){
   chooseCha("Razzi");
+  $("#title").html("Exploring The Jungle with "+character);
   //$("#shen").hide();
 });
 

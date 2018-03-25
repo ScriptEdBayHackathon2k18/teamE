@@ -35,6 +35,10 @@ function say(text){
   $("#message").text(text);
 }
 
+function add(text){
+  $("#message").append("<br"+text);
+}
+
 function r(){
   character = "Razzi";
   chooseCha(character);
@@ -271,6 +275,7 @@ setInterval(function(){
   $("#str").text("Strength: "+strength);
   $("#skill1").text("skill1: "+skills[0]);
   $("#skill2").text("skill2: "+skills[1]);
+  $("#chealth").text("Cheetah Health: "+Chealth);
 },100);
 
 
@@ -278,6 +283,16 @@ setInterval(function(){
 
   
 //battle system
+
+// cheetah attack
+function attack(){
+  var dmg = randomInt(1,4);
+  health -= dmg;
+  add("The cheetah attacks you and you take "+dmg+" damage!");
+  if(health <= 0){
+    BG();
+  }
+}
 
 function battle(){
 $("#chealth").show();
@@ -289,34 +304,39 @@ $(".Bbuttons").show();
 
 $("#attack").click(function(){
   Chealth -= strength;
+  say("You attack the cheetah and it takes "+strength+" damage!");
+  attack();
   if (Chealth <= 0){
       say("You defeated the cheetah and the cheetah run away!");
       defeatedTimes += 1;
       cx = randomInt(0,9);
       cy = randomInt(0,9);
-      $(".Bbutton").hide();
+      $(".Bbuttons").hide();
       $(".button").show();
-      $("#ch")
+      $("#chealth").hide();
+      draw();
       if(defeatedTimes >= 3){
         say("GG, you won the game as "+character+"!");
-        $(".Bbutton").hide();
+        $(".Bbuttons").hide();
         $(".button").hide();
       }
   }
 });
 
 $("#escape").click(function(){
-  $(".Bbutton").hide();
+  $(".Bbuttons").hide();
   $(".button").show();
   say("You escaped! The cheetah can't find you and run away too!");
   cx = randomInt(0,9);
   cy = randomInt(0,9);
+  $("#chealth").hide();
+  draw();
 });
 
 
 function BG(){
-  $(".Bbutton").hide();
+  $(".Bbuttons").hide();
   $(".button").hide();
-  
-  
+  say(character+" had been defeated by the cheetah!");
 }
+

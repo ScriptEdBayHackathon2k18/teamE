@@ -26,6 +26,9 @@ function randomInt(min,max){
 function r(){
   character = "Razzi";
 }
+function s(){
+character
+}
 
 //draws the grid
 function draw(){
@@ -38,12 +41,13 @@ function draw(){
       box.css("position","absolute")
       box.css("top",i*50+"px");
       box.css("left",i2*50+770+"px");
-      box.css("border","solid","5px");
+      box.css("border","solid","1px");
       box.css("width","50px");
       box.css("height","50px");
       //if character on tile
       if (i === y && i2 === x){
         var pic = $("<img>").css("left",i2*50+770+"px");
+        pic.css("position","absolute");
         pic.css("top",i*50+"px");
         pic.css("width","50px");
         pic.css("height","50px");
@@ -116,24 +120,25 @@ function east(){
 }
 
 $(".button").click(function(){
-  var direction = String($(this).attr("id"));
+  var direction = $(this).attr("id");
   //direction = direction.substr(1,direction.length);
   console.log(direction);
-  if (direction === "north"){
+  if (direction === "north" && y > 0){
     north();
   }
-  if (direction === "south"){
+  if (direction === "south" && y < 9){
     south();
   }
-  if (direction === "west"){
+  if (direction === "west" && x > 0){
     west();
   }
-  if (direction === "east"){
+  if (direction === "east" && x < 9){
     east();
   }
   if (grid[x][y] === "empty"){
     randoming();
   }
+  draw();
 });
 
 

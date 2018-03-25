@@ -3,9 +3,26 @@ display:flex;
 }
 
 .Cpic{
-width:;
-height:5;
+width:200px;
+height:200px;
+  border-radius:100px;
+  margin-left:25%;
 }
 
-.container{
-  width:50
+#left{
+  flex:50%;
+  background:blue;
+}
+#right{
+flex:50%;
+  background:red;
+}
+  
+.Cpic:hover{
+    top:-20px;
+    position:relative;
+}
+.button{
+width:80px;
+height:50px;
+}

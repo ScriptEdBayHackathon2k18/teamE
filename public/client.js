@@ -23,6 +23,10 @@ function randomInt(min,max){
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+function r(){
+  character = "Razzi";
+}
+
 //draws the grid
 function draw(){
   //erase all stuff inside grid
@@ -72,6 +76,10 @@ function chooseCha(cha){
   grid[0][0] = "character";
 }
 
+//random function when get to empty space
+function randoming(){
+}
+
 $("#shen").click(function(){
   chooseCha("Shen");
   $("#title").html("Exploring The Jungle with "+character);
@@ -113,6 +121,18 @@ $(".button").click(function(){
   console.log(direction);
   if (direction === "north"){
     north();
+  }
+  if (direction === "south"){
+    south();
+  }
+  if (direction === "west"){
+    west();
+  }
+  if (direction === "east"){
+    east();
+  }
+  if (grid[x][y] === "empty"){
+    randoming();
   }
 });
 

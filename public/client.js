@@ -27,15 +27,23 @@ function randomInt(min,max){
 function draw(){
   for(i = 0; i < 10;i++){
     for (i2 = 0; i2 < 10; i2 ++){
-      //styling the box
+      //setting class
       var box = $("<div>").attr("class","box");
-      if (grid[i][i2] === "empty"){
-        box.css("position","absolute")
-        box.css("top",i*50+"px");
-        box.css("left",i2*50+770+"px");
-        box.css("border","solid","5px");
-        box.css("width","50px");
-        box.css("height","50px");
+      box.css("position","absolute")
+      box.css("top",i*50+"px");
+      box.css("left",i2*50+770+"px");
+      box.css("border","solid","5px");
+      box.css("width","50px");
+      box.css("height","50px");
+      //if character on tile
+      if (grid[i][i2] === "character"){
+        var pic = $("<img>").css();
+        if (character === "Razzi"){
+          pic.css("src","https://avatars3.githubusercontent.com/u/2244895?s=400&v=4");
+        } else {
+          
+        }
+        $("#grids").append(pic);
       }
       //add the box
       $("#grids").append(box);
@@ -55,19 +63,18 @@ function chooseCha(cha){
   } else {
     skills.push("item");
   }
+  grid[0][0] = "character";
 }
 
 $("#shen").click(function(){
   chooseCha("Shen");
-  alert(character);
-  $("#razzipic").attr("src","https://avatars1.githubusercontent.com/u/3596778?s=460&v=4");
+  $("#razzi").hide();
   $("#shen").hide();
   $("#Razziname").html("Shen");
 });
 
 $("#razzi").click(function(){
   chooseCha("Razzi");
-  alert(character);
   $("#shen").hide();
 });
 

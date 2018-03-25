@@ -204,7 +204,8 @@ $(".button").click(function(){
   var direction = $(this).attr("id");
   //direction = direction.substr(1,direction.length);
   console.log(direction);
-  var x 
+  var posx = x;
+  var posy = y;
   if (direction === "destroy"){
     destroy();
     return;
@@ -225,7 +226,7 @@ $(".button").click(function(){
     east();
     food --;
   }
-  if (grid[x][y] === "empty"){
+  if (grid[x][y] === "empty" && !(posx === x && posy === y)){
     randoming();
   } else if (grid[x][y] === "destroy"){
     say("All you see is a ruin in the vast jungle,");
@@ -267,6 +268,12 @@ setInterval(function(){
   $("#health").text("Health: "+health);
   $("#str").text("Strength: "+strength);
   $("#chealth").text("Cheetah Health: "+Chealth);
+  if (character !== ""){
+    $("#left").css("background","transparent");
+    $("#right").css("background","transparent");
+    $("#info").css("background","white");
+    $("#grids")
+  }
 },100);
 
 

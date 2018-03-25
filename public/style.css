@@ -21,6 +21,7 @@ text-align:center;
 #right{
 flex:55%;
   background:red;
+  opacity:1;
 }
   
 .Cpic:hover{
@@ -45,6 +46,7 @@ flex-direction:column;
 #info{
   top:580px;
   border:solid 5px black;
+  color:black;
   position:absolute;
   height:175px;
   width:45%;
@@ -77,9 +79,13 @@ animation:Ccolor 3s infinite alternate;
 
 @keyframes Bopacity{
   from{
-    opacity1
+    opacity1:1;
   }to{
-    opacity:0.2;
+    opacity:0.5;
   }
 
+}
+
+.box{
+border;;
 }

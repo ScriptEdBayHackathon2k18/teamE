@@ -43,9 +43,9 @@ flex-direction:column;
 }
 
 #info{
-  top:575px;
+  top:560px;
   border:solid 5px black;
   position:absolute;
   height:150px;
-  width:50%;
+  width:45%;
 }

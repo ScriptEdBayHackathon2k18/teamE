@@ -1,6 +1,6 @@
 //charater variables
 var character = "";
-var health = 0;
+var health = 10;
 var food = 20;
 var strength = 1;
 var skills = [];//Shield,smoke,damage,item. Shen has shield, Razzi has smoke
@@ -91,54 +91,7 @@ function chooseCha(cha){
   grid[0][0] = "character";
 }
 
-//random function when get to empty space
-function randoming(){
-  var a = randomInt(0,10);
-  if (a === 0){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 1){
-    say("The wind is too strong and it's making you cold so you eat another piece of food");
-    food --;
-  }
-  if (a === 2){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 3){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 4){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 5){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 6){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 7){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 8){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 9){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-  if (a === 10){
-    say("The sun is too hot so you eat another piece of food");
-    food --;
-  }
-}
+
 
 $("#shen").click(function(){
   chooseCha("Shen");
@@ -179,6 +132,8 @@ $(".button").click(function(){
   var direction = $(this).attr("id");
   //direction = direction.substr(1,direction.length);
   console.log(direction);
+  if (direction === "destroy"){
+  }
   if (direction === "north" && y > 0){
     north();
   }
@@ -194,19 +149,23 @@ $(".button").click(function(){
   if (grid[x][y] === "empty"){
     randoming();
   }
+  food --;
   draw();
 });
 
 function destroy(){
-  if (grid[x][ !== ""){
-  grid[x][y] = "destroy"
+  if (grid[x][y] !== "destroy"){
+  grid[x][y] = "destroy";
   }
 }
 
+setInterval(function(){
+  $("#food").text("Food: "+food);
+  $("#health").text("Health: "+health);
+},100);
 
 
-
-
+//status count
 
 
 

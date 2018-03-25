@@ -6,7 +6,13 @@ display:flex;
 width:200px;
 height:200px;
   border-radius:100px;
-  margin-left:25%;
+  text-align:center;
+
+}
+
+
+#shen,#razzi {
+  text-align:center;
 }
 
 #left{
@@ -24,5 +30,10 @@ flex:50%;
 }
 .button{
 width:80px;
-height:50px;
+height:70px;
+
+}
+
+#title{
+  text-align:center;
 }

@@ -1,5 +1,5 @@
 //charater variables
-var charater;
+var character = "";
 var health = 0;
 var food = 20;
 var skills = [];//Shield,smoke,damage,item. Shen has shield, Razzi has smoke
@@ -7,17 +7,28 @@ var skills = [];//Shield,smoke,damage,item. Shen has shield, Razzi has smoke
 var x = 0;
 var y = 0;
 //grid variables
-var grid = {};
-for (var i = 1; i <= 10; i ++){
-  
+//set up the grid
+var grid = new Array(10);
+for (var i = 0; i < 10; i ++){
+  grid[i] = new Array(10);
+}
+for (i = 0; i < 10; i ++){
+  for (var i2 = 0; i2 < 10; i2 ++){
+    grid[i][i2] = "Empty";
+  }
 }
 
+//functions
 function randomInt(min,max){
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-function chooseCha(character){
-  if (character === "Razzi"){
+//
+
+//choose the character
+function chooseCha(cha){
+  character = cha;
+  if (cha === "Razzi"){
     skills.push("smoke");
   } else {
     skills.push("shield");
@@ -29,3 +40,11 @@ function chooseCha(character){
   }
 }
 
+$("#shen").click(function(){
+  choosecha();
+});
+
+$("#razzi").click(function(){
+  character = "Razzi"
+  alert(character);
+});

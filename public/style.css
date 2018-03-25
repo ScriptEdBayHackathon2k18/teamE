@@ -16,11 +16,11 @@ text-align:center;
 
 #left{
   flex:50%;
-  background:blue;
+  background:url(image.jpg);
 }
 #right{
 flex:55%;
-  background:red;
+  background:url(image.jpg);
   opacity:1;
 }
   
@@ -87,5 +87,5 @@ animation:Ccolor 3s infinite alternate;
 }
 
 .box{
-border;;
+color:#bee0c1;
 }

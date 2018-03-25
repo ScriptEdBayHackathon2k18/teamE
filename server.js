@@ -15,7 +15,9 @@ app.use(express.static('public'))
 app.get("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html')
 })
-
+app.get("/character", (request, response) => {
+  response.sendFile(__dirname + '/views/character.html')
+})
 // Simple in-memory store
 const dreams = [
   "Find and count some sheep",

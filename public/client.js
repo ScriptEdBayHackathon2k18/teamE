@@ -17,6 +17,7 @@ for (i = 0; i < 10; i ++){
     grid[i][i2] = "empty";
   }
 }
+grid[0][0] = "character"
 
 //functions
 function randomInt(min,max){
@@ -37,11 +38,14 @@ function draw(){
       box.css("height","50px");
       //if character on tile
       if (grid[i][i2] === "character"){
-        var pic = $("<img>").css();
+        var pic = $("<img>").css("left",i2*50+770+"px");
+        pic.css("top",i*50+"px");
+        pic.css("width","50px");
+        pic.css("height","50px");
         if (character === "Razzi"){
           pic.css("src","https://avatars3.githubusercontent.com/u/2244895?s=400&v=4");
         } else {
-          
+          pic.css("src","https://avatars1.githubusercontent.com/u/3596778?s=460&v=4");
         }
         $("#grids").append(pic);
       }
@@ -68,22 +72,17 @@ function chooseCha(cha){
 
 $("#shen").click(function(){
   chooseCha("Shen");
-  $("#razzi").hide();
-  $("#shen").hide();
-  $("#Razziname").html("Shen");
+  //$("#razzi").hide();
+  //$("#shen").hide();
+  //$("#Razziname").html("Shen");
 });
 
 $("#razzi").click(function(){
   chooseCha("Razzi");
-  $("#shen").hide();
+  //$("#shen").hide();
 });
 
-//hide buttons during selection
-$("#shen, #razzi").click(function(){
-  $(".button").show();
-  $("#title").html("Jungle Exploration with "+character);
-});
-$(".button").hide();
+
 
 
 

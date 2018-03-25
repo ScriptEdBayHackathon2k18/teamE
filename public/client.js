@@ -17,7 +17,6 @@ for (i = 0; i < 10; i ++){
     grid[i][i2] = "empty";
   }
 }
-grid[0][0] = "character"
 
 //functions
 function randomInt(min,max){
@@ -39,7 +38,7 @@ function draw(){
       box.css("width","50px");
       box.css("height","50px");
       //if character on tile
-      if (grid[i][i2] === "character"){
+      if (i === y && i2 === x){
         var pic = $("<img>").css("left",i2*50+770+"px");
         pic.css("top",i*50+"px");
         pic.css("width","50px");
@@ -87,6 +86,29 @@ $("#razzi").click(function(){
   //$("#shen").hide();
 });
 
+//clear background and call draw
+if(character!==""){
+$(".container").css("background","white");
+}
+//direction
+function north(){
+  y -= 1;
+}
+
+function south(){
+  y += 1;
+}
+
+function west(){
+  x -= 1;
+}
+
+function east(){
+  x += 1;
+}
+
+$(".button").click(function(){
+});
 
 
 

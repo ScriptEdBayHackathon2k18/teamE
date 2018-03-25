@@ -24,6 +24,10 @@ function randomInt(min,max){
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+function say(text){
+  $("#message").text(text);
+}
+
 function r(){
   character = "Razzi";
   $(".container").css("background","white");
@@ -90,7 +94,50 @@ function chooseCha(cha){
 //random function when get to empty space
 function randoming(){
   var a = randomInt(0,10);
-  
+  if (a === 0){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 1){
+    say("The wind is too strong and it's making you cold so you eat another piece of food");
+    food --;
+  }
+  if (a === 2){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 3){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 4){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 5){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 6){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 7){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 8){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 9){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
+  if (a === 10){
+    say("The sun is too hot so you eat another piece of food");
+    food --;
+  }
 }
 
 $("#shen").click(function(){
@@ -151,7 +198,7 @@ $(".button").click(function(){
 });
 
 function destroy(){
-  if (){
+  if (grid[x][ !== ""){
   grid[x][y] = "destroy"
   }
 }

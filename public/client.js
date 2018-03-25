@@ -18,6 +18,10 @@ for (i = 0; i < 10; i ++){
     grid[i][i2] = "empty";
   }
 }
+//cheetah position
+var cx = randomInt(1,9);
+var cy = randomInt(1,9);
+var encounter = false;
 
 //functions
 function randomInt(min,max){
@@ -70,6 +74,16 @@ function draw(){
         $("#grids").append(pic);
         console.log(character);
       }
+      //if cheetah on tile
+      if (i === cy && i2 === cx && encounter === true){
+        var pic2 = $("<img>").css("left",i2*51+770+"px");
+        pic2.css("position","absolute");
+        pic2.css("top",i*51+90+"px");
+        pic2.css("width","50px");
+        pic2.css("height","50px");
+        pic2.attr("src","https://dg2d3wxprq381.cloudfront.net/cms/sites/default/files/header-cheetah-sperka.jpg?itok=0AGjZLOP");
+        $("#grids").append(pic2);
+      }
       //add the box
       $("#grids").append(box);
     }
@@ -95,7 +109,8 @@ function chooseCha(cha){
 function randoming(){
   var a = randomInt(0,10);
   if (a === 0){
-    say("The sun is too hot so you eat another piece of food");
+    say("The sun is too hot so you eat another piece of food, but the extra food give you strength!");
+    health += 2;
     food --;
   }
   if (a === 1){
@@ -111,8 +126,9 @@ function randoming(){
     food ++;
   }
   if (a === 4){
-    say("You find another piece of food");
+    say("You find another piece of food, and you get a healing pack!");
     food ++;
+    health += 2;
   }
   if (a === 5){
     say("You find a spear and increase a strength!");
@@ -204,9 +220,19 @@ $(".button").click(function(){
   } else if (grid[x][y] === "destroy"){
     say("All you see is a ruin in the vast jungle,");
   }
-  if (food < 0){
-    $("#north").prop( "disabled", true ); // <div id="north">North</div>
+  //if encounter the cheetah 
+  if (x === cx && y === cy ){
+    encounter = true;
   }
+  //if the food reaches 0
+  if (food <= 0){
+    $("#north").prop( "disabled", true );
+    $("#south").prop( "disabled", true );
+    $("#east").prop( "disabled", true );
+    $("#west").prop( "disabled", true );
+  }
+  
+  
   draw();
 });
 
@@ -228,6 +254,20 @@ setInterval(function(){
 
 //status count
 
+  
+//battle system
+function battle(){
+var result =""
+$(".button").hide();
+  if(result==="win"){
+
+}else if(result === "escape"){
+
+}else if(result === "defeat"){
+
+}
+  
+  }
 
 
 

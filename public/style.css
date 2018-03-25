@@ -1,3 +1,11 @@
-#right {
-display-flex: 50%;
+#screen {
+display:flex;
 }
+
+.Cpic{
+width:;
+height:5;
+}
+
+.container{
+  width:50

@@ -26,23 +26,22 @@ function randomInt(min,max){
 //draws the grid
 function draw(){
   for(i = 0; i < 10;i++){
-    for (i2 = 0; i < 10; i ++){
+    for (i2 = 0; i2 < 10; i2 ++){
       //styling the box
       var box = $("<div>").attr("class","box");
       if (grid[i][i2] === "empty"){
-        box.css("position","relative")
-        box.css("left","20px");
+        box.css("position","absolute")
+        box.css("top",i*50+"px");
+        box.css("left",i2*50+770+"px");
         box.css("border","solid","5px");
-        box.css("width","20px");
-        box.css("height","20px");
+        box.css("width","50px");
+        box.css("height","50px");
       }
       //add the box
-      $("#right").append(box);
+      $("#grids").append(box);
     }
-    $("#right").append("<br>");
   }
 }
-draw();
 //choose the character
 function chooseCha(cha){
   character = cha;
@@ -61,21 +60,23 @@ function chooseCha(cha){
 $("#shen").click(function(){
   chooseCha("Shen");
   alert(character);
+  $("#razzipic").attr("src","https://avatars1.githubusercontent.com/u/3596778?s=460&v=4");
+  $("#shen").hide();
+  $("#Razziname").html("Shen");
 });
 
 $("#razzi").click(function(){
   chooseCha("Razzi");
   alert(character);
+  $("#shen").hide();
 });
 
 //hide buttons during selection
-$("")
-if (character===""){
-  $(".button").hide();
-}else{
+$("#shen, #razzi").click(function(){
   $(".button").show();
-}
-
+  $("#title").html("Jungle Exploration with "+character);
+});
+$(".button").hide();
 
 
 

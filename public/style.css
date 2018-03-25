@@ -50,3 +50,9 @@ flex-direction:column;
   width:45%;
   font-size:27px;
 }
+
+.Bbuttons{
+display:none;
+width:30em;
+height:6.5em;
+}

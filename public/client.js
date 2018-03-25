@@ -34,11 +34,13 @@ function say(text){
 
 function r(){
   character = "Razzi";
+  chooseCha(character);
   $(".container").css("background","white");
 
 }
 function s(){
   character="Shen";
+  chooseCha(character);
   $(".container").css("background","white");
 }
 
@@ -50,7 +52,7 @@ function draw(){
     for (i2 = 0; i2 < 10; i2 ++){
       //setting class
       var box = $("<div>").attr("class","box");
-      box.css("position","absolute")
+      box.css("position","absolute");
       box.css("top",i*51+90+"px");
       box.css("left",i2*51+770+"px");
       box.css("border","solid","1px");
@@ -223,6 +225,9 @@ $(".button").click(function(){
   //if encounter the cheetah 
   if (x === cx && y === cy ){
     encounter = true;
+    say(character+" encounters the cheetah!");
+    cx = randomInt(0,9);
+    cy = randomInt(0,9);
   }
   //if the food reaches 0
   if (food <= 0){
@@ -230,6 +235,11 @@ $(".button").click(function(){
     $("#south").prop( "disabled", true );
     $("#east").prop( "disabled", true );
     $("#west").prop( "disabled", true );
+  } else {
+    $("#north").prop( "disabled", false );
+    $("#south").prop( "disabled", false );
+    $("#east").prop( "disabled", false );
+    $("#west").prop( "disabled", false );
   }
   
   
@@ -237,18 +247,27 @@ $(".button").click(function(){
 });
 
 function destroy(){
-  if (grid[y][x] !== "destroy"){
+  if (grid[y][x] !== "destroy") {
     grid[y][x] = "destroy";
     say("You destroy a place! You also get some food for gathering in that place.");
     food += 3;
   } else {
     say("The tile is already destroyed!");
   }
-}
+  
+  if (food >= 1) {
+    $("#north").prop( "disabled", false );
+    $("#south").prop( "disabled", false );
+    $("#east").prop( "disabled", false );
+    $("#west").prop( "disabled", false );
+  } 
+ }
 
 setInterval(function(){
   $("#food").text("Food: "+food); // <div id="food">Food</div>
   $("#health").text("Health: "+health);
+  $("#skill1").text("skill1: "+skills[0]);
+  $("#skill2").text("skill2: "+skills[1]);
 },100);
 
 
@@ -257,8 +276,16 @@ setInterval(function(){
   
 //battle system
 function battle(){
-var result =""
+var result ="";
+var Chealth = x
 $(".button").hide();
+$(".Bbuttons").show();
+
+  
+  
+  
+  
+  
   if(result==="win"){
 
 }else if(result === "escape"){
@@ -269,5 +296,6 @@ $(".button").hide();
   
   }
 
+$("");
 
 
